@@ -8,7 +8,7 @@
                         Edit Data Provinsi
                     </div>
                     <div class="card-body">
-                        <form action="{{route('admin.provinsi.update',$provinsi->id)}}" method="post">
+                        <form action="{{route('provinsi.update',$provinsi->id)}}" method="post">
                         @method('put')
                         @csrf
                         <div class="form-group">

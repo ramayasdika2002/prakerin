@@ -23,17 +23,17 @@
                             <input type="text" name="positif" class="form-control" required>
                         </div>
                         <div class="form-group">
-                                <label for="">Sembuh</label>
-                                <input type="text" name="sembuh" class="form-control" required>
-                            </div>
-                            <div class="form-group">
-                                    <label for="">Meninggal</label>
-                                    <input type="text" name="meninggal" class="form-control" required>
-                                </div>
-                                <div class="form-group">
-                                        <label for="">Tanggal</label>
-                                        <input type="text" name="tanggal" class="form-control" required>
-                                    </div>
+                            <label for="">Sembuh</label>
+                            <input type="text" name="sembuh" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Meninggal</label>
+                            <input type="text" name="meninggal" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                                <label for="">Tanggal</label>
+                                <input type="text" name="tanggal" class="form-control" required>
+                        </div>
                         <div class="fprm-group">
                             <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                         </div>
