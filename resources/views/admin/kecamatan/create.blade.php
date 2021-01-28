@@ -20,7 +20,10 @@
                             </div>
                         <div class="form-group">
                             <label for="">Nama kecamatan</label>
-                            <input type="text" name="nama_kecamatan" class="form-control" required>
+                            <input type="text" name="nama_kecamatan" class="form-control" id="exampleInputPassword1" placeholder="Nama Kecamatan" required>
+                            @if($errors->has('nama_kecamatan'))
+                                <span class="text-danger">{{ $errors->first('nama_kecamatan') }}</span>
+                            @endif
                         </div>
                         <div class="fprm-group">
                             <button type="submit" class="btn btn-primary btn-block">Simpan</button>

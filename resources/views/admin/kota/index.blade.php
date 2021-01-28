@@ -18,6 +18,7 @@
                                     <th>No</th>
                                     <th>Kode Kota<th>
                                     <th>Nama Kota</th>
+                                    <th>aksi</th>
                                 </tr>
                                 @php
                                     $no=1;

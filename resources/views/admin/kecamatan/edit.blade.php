@@ -22,6 +22,9 @@
                         <div class="form-group">
                             <label for="">Nama kecamatan</label>
                             <input type="text" name="nama_kecamatan" class="form-control" value="{{$kecamatan->nama_kecamatan}}" class="form-control" required>
+                            @if($errors->has('nama_kecamatan'))
+                                <span class="text-danger">{{ $errors->first('nama_kecamatan') }}</span>
+                            @endif
                         </div>
                         <div class="fprm-group">
                             <button type="submit" class="btn btn-primary btn-block">Simpan</button>

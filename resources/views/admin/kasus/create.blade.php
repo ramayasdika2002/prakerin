@@ -18,25 +18,26 @@
                                 @endforeach
                                 </select>
                             </div>
-                        <div class="form-group">
-                            <label for="">Positif</label>
-                            <input type="text" name="positif" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Sembuh</label>
-                            <input type="text" name="sembuh" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="">Meninggal</label>
-                            <input type="text" name="meninggal" class="form-control" required>
-                        </div>
-                        <div class="form-group">
+                            <div class="form-group">
+                                <label for="">Jumlah Positif</label>
+                                <input type="number" name="positif" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jumlah Meninggal</label>
+                                <input type="number" name="meninggal" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Jumlah Sembuh</label>
+                                <input type="number" name="sembuh" class="form-control" required>
+                            </div>
+                            <div class="form-group">
                                 <label for="">Tanggal</label>
-                                <input type="text" name="tanggal" class="form-control" required>
-                        </div>
-                        <div class="fprm-group">
-                            <button type="submit" class="btn btn-primary btn-block">Simpan</button>
-                        </div>
+                                <input type="date" name="tanggal" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn block">Simpan</button>
+                                <a href=" {{ route('kasus.index') }} " class="btn btn-danger">Back</a>
+                            </div>
                         </form>
                     </div>
                 </div>
