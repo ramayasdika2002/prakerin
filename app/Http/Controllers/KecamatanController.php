@@ -94,10 +94,9 @@ class KecamatanController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_kecamatan' => 'required|unique:kecamatans',
+            'nama_kecamatan' => 'required',
         ], [
             'nama_kecamatan.required' => 'Nama kecamatan tidak boleh kosong',
-            'nama_kecamatan.unique' => 'Nama kecamatan sudah terdaftar'
         ]);
 
         $kecamatan = Kecamatan::findOrFail($id);

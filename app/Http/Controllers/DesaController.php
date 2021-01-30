@@ -94,10 +94,9 @@ class DesaController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_desa' => 'required|unique:desas'
+            'nama_desa' => 'required'
         ], [
             'nama_desa.required' => 'Nama desa tidak boleh kosong',
-            'nama_desa.unique' => 'Nama desa sudah terdaftar'
         ]);
         
         $desa = Desa::findOrFail($id);

@@ -10,13 +10,16 @@
                     <div class="card-body">
                         <form action="{{route('kasus.store')}}" method="post">
                         @csrf
+                        @livewireScripts
+                        @livewire('dropdowns')
+                        @livewireStyles
                         <div class="form-group">
-                                <label>Pilih rw</label>
+                                {{-- <label>Pilih rw</label>
                                 <select name="id_rw" class="form-control">
                                 @foreach ($rw as $item)
                                       <option value="{{ $item->id }}">{{$item->nama_rw}}</option>
                                 @endforeach
-                                </select>
+                                </select> --}}
                             </div>
                             <div class="form-group">
                                 <label for="">Jumlah Positif</label>

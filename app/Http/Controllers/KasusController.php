@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kasus;
-use App\Models\rw;
+use App\Models\Rw;
+use App\Models\Kecamatan;
+use App\Models\Desa;
+use App\Models\Provinsi;
+use App\Models\Kota;
 use Illuminate\Http\Request;
 
 class KasusController extends Controller
@@ -17,7 +21,7 @@ class KasusController extends Controller
     {
         $kasus = Kasus::all();
         $rw = Rw::all();
-        return view('admin.kasus.index',compact('kasus','rw'));
+        return view('admin.kasus.index', compact('kasus'));
 
         // $kasus = kasus::with('admin.rw')->get();
         // return view('admin.kasus.index',compact('kasus'));
@@ -32,7 +36,7 @@ class KasusController extends Controller
     {
         $kasus = Kasus::all();
         $rw = Rw::all();
-        return view('admin.kasus.create' , compact('rw'));
+        return view('admin.kasus.create' , compact('kasus','rw'));
     }
 
     /**
@@ -64,7 +68,12 @@ class KasusController extends Controller
     public function show($id)
     {
         $kasus = Kasus::findOrFail($id);
-        return view('admin.kasus.show', compact('kasus'));
+        $rw=Rw::all();
+        $kota=Kota::all();
+        $provinsi=Provinsi::all();
+        $kecamatan=Kecamatan::all();
+        $desa=Desa::all();
+        return view ('admin.kasus.show' , compact('kasus' , 'rw' , 'kota' , 'provinsi' , 'kecamatan' , 'desa'));
     }
 
     /**
@@ -77,7 +86,8 @@ class KasusController extends Controller
     {
         $kasus = Kasus::findOrFail($id);
         $rw = Rw::all();
-        return view('admin.kasus.edit', compact('kasus','rw'));
+        $selected = $kasus->rw->pluck('id')->toArray();
+        return view('admin.kasus.edit', compact('kasus', 'rw' , 'selected'));
     }
 
     /**

@@ -18,6 +18,7 @@
                                     <th>No</th>
                                     <th>Kode Kota<th>
                                     <th>Nama Kota</th>
+                                    <th>Provinsi</th>
                                     <th>aksi</th>
                                 </tr>
                                 @php
@@ -28,6 +29,7 @@
                                         <td>{{$no++}}</td>
                                         <td>{{$data->kode_kota}}</td>
                                         <td>{{$data->nama_kota}}</td>
+                                        {{-- <td>{{$data->provinsi->nama_provinsi}}</td> --}}
                                         <td>
                                             <form action="{{route('kota.destroy', $data->id)}}" method="post">
                                                 @method('delete')

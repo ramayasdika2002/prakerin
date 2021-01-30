@@ -94,10 +94,9 @@ class RwController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_rw' => 'required|unique:rws'
+            'nama_rw' => 'required'
         ], [
             'nama_rw.required' => 'Nama rw tidak boleh kosong',
-            'nama_rw.unique' => 'Nama desa sudah terdaftar'
         ]);
         
         $rw = Rw::findOrFail($id);

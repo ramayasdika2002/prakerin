@@ -45,13 +45,12 @@ class KotaController extends Controller
     {
         $request->validate([
             'kode_kota' => 'required|max:7|unique:kotas',
-            'nama_kota' => 'required|unique:kotas'
+            'nama_kota' => 'required'
         ], [
             'kode_kota.required' => 'Kode kota tidak boleh kosong',
             'kode_kota.max' => 'Kode maximal 7 karakter',
             'kode_kota.unique' => 'Kode kota sudah terdaftar',
             'nama_kota.required' => 'Nama kota tidak boleh kosong',
-            'nama_kota.unique' => 'Nama kota sudah terdaftar'
         ]);
         
         $kota = new Kota();

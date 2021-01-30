@@ -9,9 +9,9 @@ class kota extends Model
 {
 
     public function provinsi() {
-        return $this->belongsTo('App\Models\provinsi\id_provinsi');
+        return $this->belongsTo('App\Models\provinsi','id_provinsi');
     }
     public function kecamatan() {
-        return $this->hasMany('App\Models\kecamatan\id_kota');
+        return $this->hasMany('App\Models\kecamatan','id_kota');
     }
 }

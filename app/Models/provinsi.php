@@ -9,6 +9,9 @@ class provinsi extends Model
 {
 
     public function kota(){
-        return $this->hasMany('App\Models\kota\id_provinsi');
+        return $this->hasMany('App\Models\kota','id_provinsi');
     }
+    // public function kota(){
+    //     return $this->hasMany('App\Models\kota','id_provinsi');
+    // }
 }

@@ -91,12 +91,11 @@ class ProvinsiController extends Controller
     {
         $request->validate([
             'kode_provinsi' => 'required|max:3',
-            'nama_provinsi' => 'required|unique:provinsis'
+            'nama_provinsi' => 'required'
         ], [
             'kode_provinsi.required' => 'Kode Provinsi tidak boleh kosong',
             'kode_provinsi.max' => 'Kode maximal 3 karakter',
             'nama_provinsi.required' => 'Nama Provinsi tidak boleh kosong',
-            'nama_provinsi.unique' => 'Nama Provinsi sudah terdaftar'
         ]);
 
         $provinsi = Provinsi::findOrFail($id);
@@ -104,7 +103,7 @@ class ProvinsiController extends Controller
         $provinsi->nama_provinsi = $request->nama_provinsi;
         $provinsi->save();
         return redirect()->route('provinsi.index')
-                    ->with(['succes'=>'Data <b>',$provinsi->nama_provinsi,
+                    ->with(['info'=>'Data <b>',$provinsi->nama_provinsi,
                     '</b> berhasil di edit']);
     }
 
