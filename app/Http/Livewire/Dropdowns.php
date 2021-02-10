@@ -2,15 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Rw;
-use App\Models\Desa;
-use App\Models\Kecamatan;
-use App\Models\Kota;
-use App\Models\Provinsi;
 use Livewire\Component;
+use App\Models\Provinsi;
+use App\Models\Kota;
+use App\Models\Kecamatan;
+use App\Models\Desa;
+use App\Models\Rw;
 
 class Dropdowns extends Component
 {
+
     public $provinsis;
     public $kotas;
     public $kecamatans;
@@ -20,7 +21,7 @@ class Dropdowns extends Component
     public $selectedProvinsi = null;
     public $selectedKota = null;
     public $selectedKecamatan = null;
-    public $selecteddesa = null;
+    public $selectedDesa = null;
     public $selectedRw = null;
 
     public function mount($selectedRw = null)
@@ -32,19 +33,22 @@ class Dropdowns extends Component
         $this->rws = collect();
         $this->selectedRw = $selectedRw;
 
-        if (!is_null($selectedRw)) {
+        if(!is_null($selectedRw))
+        {
             $rw = Rw::with('desa.kecamatan.kota.provinsi')->find($selectedRw);
-            if ($rw) {
-                $this->rw = Rw::where('id_desa', $rw->id_desa)->get();
-                $this->desa = Desa::where('id_kecamatan', $rw->desa->id_kecamatan)->get();
-                $this->kecamatan = Kecamatan::where('id_kota', $rw->desa->kecamatan->id_kota)->get();
-                $this->kota = Kota::where('id_provinsi', $rw->desa->kecamatan->kota->id_provinsi)->get();
-                $this->selectedProvinsi =$rw->desa->kecamatan->kota->id_provinsi;
-                $this->selectedKota = $rw->desa->kecamatan->id_kota;
-                $this->selectedKecamatan = $rw->desa->id_kecamatan;
-                $this->selectedDesa = $rw->id_desa;
+            if($rw)
+            {
+                $this->rws = RW::where('id_desa', $rw->id_desa)->get();
+                $this->desas = Desa::where('id_kecamatan',$rw->desa->id_kecamatan)->get();
+                $this->kecamatans = Kecamatan::where('id_kota',$rw->desa->kecamatan->id_kota)->get();
+                $this->kotas = Kota::where('id_provinsi',$rw->desa->kecamatan->kota->id_provinsi)->get();
+                $this->SelectedProvinsi = $rw->desa->kecamatan->kota->id_provinsi;
+                $this->SelectedKota = $rw->desa->kecamatan->id_kota;
+                $this->SelectedKecamatan = $rw->desa->id_kecamatan;
+                $this->SelecteDesa = $rw->id_desa;
             }
         }
+
     }
 
     public function render()
@@ -54,33 +58,33 @@ class Dropdowns extends Component
 
     public function updatedSelectedProvinsi($provinsi)
     {
-        $this->kota = Kota::where('id_provinsi', $provinsi)->get();
-        $this->selectedKota = NULL;
+        $this->kotas = Kota::where('id_provinsi',$provinsi)->get();
         $this->selectedKecamatan = NULL;
         $this->selectedDesa = NULL;
-        $this->selectedRw = NULL;
+        $this->selectedRw = Null;
     }
+
     public function updatedSelectedKota($kota)
     {
-        $this->kecamatan = Kecamatan::where('id_kota', $kota)->get();
-        $this->selectedKecamatan = NULL;
+        $this->kecamatans = Kecamatan::where('id_kota',$kota)->get();
         $this->selectedDesa = NULL;
-        $this->selectedRw = NULL;
+        $this->selectedRw = null;
     }
 
     public function updatedSelectedKecamatan($kecamatan)
     {
-        $this->desa = Desa::where('id_kecamatan', $kecamatan)->get();
-        $this->selectedDesa = NULL;
-        $this->selectedRw = NULL;
+        $this->desas = Desa::where('id_kecamatan',$kecamatan)->get();
+        $this->selectedRw = null;
     }
+
     public function updatedSelectedDesa($desa)
     {
         if (!is_null($desa)) {
-            $this->rw = Rw::where('id_desa', $desa)->get();
-        }else{
-            $this->selectedRw = NULL;
+            $this->rws = Rw::where('id_desa', $desa)->get();
+        } else {
+            $this->selectedRw = null;
         }
     }
+
 
 }

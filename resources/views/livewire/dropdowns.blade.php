@@ -33,7 +33,7 @@
     {{-- @if(count($selectedkKecamatan) > 0) --}}
         <div class="form-group">
         <label class="">desa</label>
-        <select name="" wire:model="selecteddesa" class="form-control">
+        <select name="" wire:model="selectedDesa" class="form-control">
             <option value=''>Pilih Kecamatan</option>
             @foreach($desas as $desa)
                 <option value={{ $desa->id }}>{{ $desa->nama_desa }}</option>

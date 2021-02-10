@@ -16,8 +16,8 @@
                         <table class="table" id="table">
                             <tr>
                                 <th>No</th>
-                                <th>Lokasi</th>
-                                <th>Jumlah Reaktif</th>
+                             
+                               
                                 <th>Jumlah Positif</th>
                                 <th>Jumlah Sembuh</th>
                                 <th>Jumlah Meninggal</th>
@@ -28,16 +28,13 @@
                             @foreach($kasus as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                <td>
-                                <td>RW <b>{{$data->rw->nama_rw}}</b>, {{$data->rw->desa->nama_desa}}<br>
-                                    {{$data->rw->desa->kecamatan->nama_kecamatan}}<br> {{$data->rw->desa->kecamatan->kota->nama_kota}},
-                                    {{$data->rw->desa->kecamatan->kota->provinsi->nama_provinsi}}
-                                </td>
-                                <td>{{$data->reaktif}}</td>
+                                
+                                
                                 <td>{{$data->positif}}</td>
                                 <td>{{$data->sembuh}}</td>
                                 <td>{{$data->meninggal}}</td>
                                 <td>{{$data->tanggal}}</td>
+                                
                                 <td>
                                     <form action="{{route('kasus.destroy',$data->id)}}" method="post">
                                         @csrf @method('delete')

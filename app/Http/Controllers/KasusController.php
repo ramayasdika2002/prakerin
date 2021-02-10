@@ -17,14 +17,17 @@ class KasusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
         $kasus = Kasus::all();
         $rw = Rw::all();
         return view('admin.kasus.index', compact('kasus'));
-
-        // $kasus = kasus::with('admin.rw')->get();
-        // return view('admin.kasus.index',compact('kasus'));
     }
 
     /**
@@ -36,7 +39,7 @@ class KasusController extends Controller
     {
         $kasus = Kasus::all();
         $rw = Rw::all();
-        return view('admin.kasus.create' , compact('kasus','rw'));
+        return view('admin.kasus.create', \compact('kasus', 'rw'));
     }
 
     /**
@@ -47,22 +50,21 @@ class KasusController extends Controller
      */
     public function store(Request $request)
     {
-        $kasus = new Kasus();
-        $kasus->id_rw = $request->id_rw;
+
+        $kasus = new Kasus;
         $kasus->positif = $request->positif;
         $kasus->sembuh = $request->sembuh;
         $kasus->meninggal = $request->meninggal;
         $kasus->tanggal = $request->tanggal;
+        $kasus->id_rw = $request->id_rw;
         $kasus->save();
-        return redirect()->route('kasus.index')
-                    ->with(['succes'=>'Data <b>',$kasus->positif,
-                    '</b> berhasil di input']);
+        return redirect()->route('kasus.index')->with(['success' => 'Data berhasil ditambah']);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\kasus  $kasus
+     * @param  \App\Models\Kasus  $kasus
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +81,7 @@ class KasusController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\kasus  $kasus
+     * @param  \App\Models\Kasus  $kasus
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -94,35 +96,32 @@ class KasusController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kasus  $kasus
+     * @param  \App\Models\Kasus  $kasus
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $kasus = Kasus::findOrFail($id);
-        $kasus->id_rw = $request->id_rw;
         $kasus->positif = $request->positif;
         $kasus->sembuh = $request->sembuh;
         $kasus->meninggal = $request->meninggal;
         $kasus->tanggal = $request->tanggal;
+        $kasus->id_rw = $request->id_rw;
         $kasus->save();
-        return redirect()->route('kasus.index')
-                    ->with(['succes'=>'Data <b>',$kasus->positif,
-                    '</b> berhasil di edit']);
+        return redirect()->route('kasus.index')->with(['info' => 'Data berhasil ditambah']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\kasus  $kasus
+     * @param  \App\Models\Kasus  $kasus
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $kasus = Kasus::findOrFail($id);
         $kasus->delete();
-        return redirect()->route('kasus.index')
-                    ->with(['succes'=>'Data <b>',$kasus->nama_kasus,
-                    '</b> berhasil di hapus']);
+        return redirect()->route('kasus.index')->with(['error' => 'Data berhasil di hapus!']);
     }
 }
+
