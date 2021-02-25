@@ -13,20 +13,25 @@
                     </div>
                     <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table">
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama rw<th>
-                                    <th>Aksi</th>
-                                </tr>
-                                @php
-                                    $no=1;
-                                @endphp
-                                @foreach ($rw as $data)
-                                    <tr>
-                                        <td>{{$no++}}</td>
-                                        <td>{{$data->nama_rw}}</td>
-                                        <td>
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Rw</th>
+                                            <th>Desa</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($rw as $data)
+                                            <tr>
+                                                <td>{{$no++}}</td>
+                                                <td> {{$data->nama_rw}} </td>
+                                                <td> {{$data->desa->nama_desa}} </td>
+                                                <td>
                                             <form action="{{route('rw.destroy', $data->id)}}" method="post">
                                                 @method('delete')
                                                 @csrf

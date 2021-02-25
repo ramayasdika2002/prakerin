@@ -14,27 +14,27 @@
                     </10>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Kecamatan</th>
-                                    
-                                    <th>Kota</th>
-                                    <th>Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
-                                @foreach ($kecamatan as $item)
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td>{{$no++}}</td>
-                                        <td> {{$item->nama_kecamatan}} </td>
-                                        <td> {{$item->kota->nama_kota}} </td>
-                                        <td>
+                                        <th>No</th>
+                                        <th>Nama Kecamatan</th>
+                                        
+                                        <th>Kota</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $no = 1;
+                                    @endphp
+                                    @foreach ($kecamatan as $item)
+                                        <tr>
+                                            <td>{{$no++}}</td>
+                                            <td> {{$item->nama_kecamatan}} </td>
+                                            <td> {{$item->kota->nama_kota}} </td>
+                                            <td>
                                             <center>
                                                 <form action="{{ route('kecamatan.destroy', $item->id) }}" method="post">
                                                     @csrf

@@ -12,24 +12,27 @@
                     </a>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Kode Kota<th>
-                                    <th>Nama Kota</th>
-                                    <th>Provinsi</th>
-                                    <th>aksi</th>
+                                    <th>Nama kota</th>
+                                    <th>Kode kota</th>
+                                    <th>provinsi</th>
+                                    <th>Aksi</th>
                                 </tr>
+                            </thead>
+                            <tbody>
                                 @php
-                                    $no=1;
+                                    $no = 1;
                                 @endphp
                                 @foreach ($kota as $data)
                                     <tr>
                                         <td>{{$no++}}</td>
-                                        <td>{{$data->kode_kota}}</td>
-                                        <td>{{$data->nama_kota}}</td>
-                                        {{-- <td>{{$data->provinsi->nama_provinsi}}</td> --}}
+                                        <td> {{$data->nama_kota}} </td>
+                                        <td> {{$data->kode_kota}} </td>
+                                        <td> {{$data->provinsi->nama_provinsi}} </td>
                                         <td>
                                             <form action="{{route('kota.destroy', $data->id)}}" method="post">
                                                 @method('delete')

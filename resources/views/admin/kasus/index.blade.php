@@ -28,7 +28,10 @@
                             @foreach($kasus as $data)
                             <tr>
                                 <td>{{$no++}}</td>
-                                
+                                {{-- <td>Desa : {{$data->rw->desa->nama_desa}}<br>
+                                    Kecamatan : {{$data->rw->desa->kecamatan->nama_kecamatan}}<br>
+                                    Kota : {{$data->rw->desa->kecamatan->kota->nama_kota}}<br>
+                                    Provinsi : {{$data->rw->desa->kecamatan->kota->provinsi->nama_provinsi}}</td> --}}
                                 
                                 <td>{{$data->positif}}</td>
                                 <td>{{$data->sembuh}}</td>
